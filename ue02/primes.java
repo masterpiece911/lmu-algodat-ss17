@@ -1,9 +1,11 @@
+import static java.lang.Integer.parseInt;
+
 /**
  * Created by sahin on 11.07.17.
  */
 public class primes {
 
-    public static boolean[] primes (int n) {
+    public static boolean[] primes(int n) {
 
         boolean[] isPrime = new boolean[n];
 
@@ -13,7 +15,7 @@ public class primes {
 
         for (int i = 2; i < isPrime.length; i++) {
 
-            if(isPrime[i] == true) {
+            if (isPrime[i] == true) {
                 int currentPrime = i;
                 int index = currentPrime + i;
                 while (index < n) {
@@ -30,10 +32,14 @@ public class primes {
 
     public static void main(String[] args) {
 
-        boolean[] primeValues = primes(1000);
+        try {
+            boolean[] primeValues = primes(parseInt(args[0]) + 1);
 
-        for (int i = 0; i < primeValues.length; i++) {
-            System.out.printf("%1$d is a prime:\t%2$b \n", i, primeValues[i]);
+            for (int i = 0; i < primeValues.length; i++)
+                System.out.printf("%1$d is a prime:\t%2$b \n", i, primeValues[i]);
+
+        } catch (NumberFormatException e) {
+
         }
 
     }
